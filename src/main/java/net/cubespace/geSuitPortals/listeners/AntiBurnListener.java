@@ -41,6 +41,11 @@ public class AntiBurnListener implements Listener {
 
     private boolean checkIfInPortal(Block block) {
         if (canIgnite(block)) {
+
+            if (!PortalsManager.PORTALS.containsKey(block.getWorld())) {
+                return false;
+            }
+
             for (Portal p : PortalsManager.PORTALS.get(block.getWorld())) {
                 if (p.isBlockInPortal(block)) {
                     return true;
